@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제 이름은 [당신의 이름]입니다 | 포트폴리오</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* 커스텀 폰트 및 부드러운 스크롤 */
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        /* 페이드 인 애니메이션을 위한 클래스 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 그라디언트 텍스트 효과 */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        }
+        
+        /* 프로필 이미지 글로우 효과 */
+        .profile-glow {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-slate-800 hover:text-blue-600 transition-colors">Portfolio</a>
+                </div>
+                
+                <!-- 모바일 메뉴 버튼 -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-slate-500 hover:text-slate-700 focus:outline-none focus:text-slate-700" aria-label="toggle menu">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                            <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">소개</a>
+                    <a href="#skills" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">기술</a>
+                    <a href="#projects" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">프로젝트</a>
+                    <a href="#contact" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">연락처</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모바일 메뉴 드롭다운 -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">소개</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">기술</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">프로젝트</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">연락처</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <!-- 배경 장식 (블러 효과가 들어간 원형들) -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+
+        <div class="max-w-4xl mx-auto text-center z-10 fade-in">
+            <!-- 프로필 이미지 -->
+            <div class="relative w-40 h-40 mx-auto mb-8">
+                <img src="https://placehold.co/400x400/3b82f6/ffffff?text=Profile" alt="프로필 사진" class="rounded-full w-full h-full object-cover border-4 border-white profile-glow">
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+                안녕하세요, <br class="sm:hidden"> 
+                <span class="text-gradient">[당신의 이름]</span> 입니다.
+            </h1>
+            <p class="mt-4 text-xl sm:text-2xl text-slate-600 max-w-2xl mx-auto font-light">
+                문제를 해결하고 가치를 만들어내는 <br class="sm:hidden"> [당신의 직업/역할, 예: 프론트엔드 개발자]입니다.
+            </p>
+            
+            <div class="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
+                <a href="#contact" class="px-8 py-3 rounded-full bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    연락하기
+                </a>
+                <a href="#projects" class="px-8 py-3 rounded-full bg-white text-slate-800 font-medium border border-slate-200 hover:bg-slate-50 transition-all shadow-sm hover:shadow-md transform hover:-translate-y-1">
+                    작업물 보기
+                </a>
+            </div>
+            
+            <!-- 소셜 링크 아이콘 -->
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition-colors">
+                    <span class="sr-only">GitHub</span>
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors">
+                    <span class="sr-only">LinkedIn</span>
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-pink-600 transition-colors">
+                    <span class="sr-only">Instagram</span>
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-sm font-bold tracking-wide text-blue-600 uppercase">About Me</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    저를 소개합니다
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center fade-in">
+                <!-- 이미지 영역 -->
+                <div class="relative rounded-2xl overflow-hidden shadow-xl group">
+                    <img src="https://placehold.co/800x600/e2e8f0/475569?text=Working+Space" alt="작업 공간" class="w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                <!-- 텍스트 영역 -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-800">새로운 도전을 즐기는 크리에이터</h3>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        안녕하세요! 저는 사용자 중심의 디자인과 효율적인 코드 작성을 중요하게 생각합니다. [자신의 전공이나 백그라운드 간단히 설명, 예: 컴퓨터 공학을 전공하며 웹 기술의 무한한 가능성에 매료되었습니다.]
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        복잡한 문제를 단순하고 우아한 방법으로 해결할 때 가장 큰 희열을 느낍니다. 항상 새로운 기술 트렌드를 주시하며, 동료들과의 협업을 통해 함께 성장하는 것을 목표로 합니다.
+                    </p>
+                    
+                    <!-- 핵심 정보 박스 -->
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                        <div>
+                            <p class="text-sm text-slate-500 font-medium">이름</p>
+                            <p class="font-semibold text-slate-800">[당신의 이름]</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-medium">이메일</p>
+                            <p class="font-semibold text-slate-800">your.email@example.com</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-medium">위치</p>
+                            <p class="font-semibold text-slate-800">서울, 대한민국</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-medium">가용성</p>
+                            <p class="font-semibold text-green-600">협업 가능</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-sm font-bold tracking-wide text-blue-600 uppercase">My Skills</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    제가 다루는 기술들
+                </p>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
+                    프로젝트에 활용하고 있으며, 지속적으로 발전시키고 있는 도구와 기술입니다.
+                </p>
+            </div>
+
+            <!-- 기술 카드 그리드 -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 fade-in">
+                <!-- 스킬 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-html5 text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">HTML5</h3>
+                </div>
+
+                <!-- 스킬 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-css3-alt text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">CSS3</h3>
+                </div>
+
+                <!-- 스킬 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-js text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">JavaScript</h3>
+                </div>
+
+                <!-- 스킬 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-react text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">React</h3>
+                </div>
+                
+                <!-- 스킬 5 (추가적인 기술들, 필요에 따라 아이콘 변경) -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-wind text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Tailwind CSS</h3>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-slate-800 text-white rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-github text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Git & GitHub</h3>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-node-js text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Node.js</h3>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-database text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-slate-800">Database</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-sm font-bold tracking-wide text-blue-600 uppercase">Portfolio</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    주요 프로젝트
+                </p>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
+                    지금까지 진행했던 의미 있는 작업물들입니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 fade-in">
+                <!-- 프로젝트 카드 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://placehold.co/800x600/f1f5f9/3b82f6?text=Project+One" alt="프로젝트 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <a href="#" class="px-4 py-2 bg-white text-slate-900 rounded-full font-medium hover:bg-blue-50 transition-colors transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300">라이브 보기</a>
+                            <a href="#" class="px-4 py-2 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/20 transition-colors transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300 delay-75">소스 코드</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full">React</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-full">Tailwind</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">멋진 웹 애플리케이션</h3>
+                        <p class="text-slate-600 mb-4 line-clamp-3">사용자의 편의성을 최우선으로 고려하여 개발한 웹 애플리케이션입니다. 반응형 디자인을 적용하여 모든 디바이스에서 최적의 환경을 제공합니다.</p>
+                    </div>
+                </div>
+
+                <!-- 프로젝트 카드 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://placehold.co/800x600/f8fafc/8b5cf6?text=Project+Two" alt="프로젝트 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                            <a href="#" class="px-4 py-2 bg-white text-slate-900 rounded-full font-medium hover:bg-blue-50 transition-colors transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300">라이브 보기</a>
+                            <a href="#" class="px-4 py-2 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white/20 transition-colors transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300 delay-75">소스 코드</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-3 py-1 bg-yellow-50 text-yellow-600 text-xs font-semibold rounded-full">JavaScript</span>
+                            <span class="px-3 py-1 bg-green-50 text-green-600 text-xs font-semibold rounded-full">Node.js</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">데이터 분석 대시보드</h3>
+                        <p class="text-slate-600 mb-4 line-clamp-3">복잡한 데이터를 시각화하여 사용자가 한눈에 파악할 수 있도록 돕는 대시보드입니다. 실시간 데이터 연동 기능을 포함하고 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center fade-in">
+                <a href="#" class="inline-flex items-center gap-2 px-6 py-3 border border-slate-300 rounded-full text-slate-700 font-medium hover:bg-slate-50 transition-colors">
+                    더 많은 프로젝트 보기 <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- 배경 효과 -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-20"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-purple-500 rounded-full mix-blend-screen filter blur-[100px] opacity-20"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-sm font-bold tracking-wide text-blue-400 uppercase">Contact Me</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
+                    함께 일해볼까요?
+                </p>
+                <p class="mt-4 text-lg text-slate-400">
+                    새로운 프로젝트 제안이나 궁금한 점이 있으시다면 언제든 연락 주세요.
+                </p>
+            </div>
+
+            <div class="bg-slate-800 rounded-2xl p-8 sm:p-10 shadow-2xl fade-in border border-slate-700">
+                <form id="contactForm" class="space-y-6" onsubmit="event.preventDefault(); showMessage();">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-300 mb-2">이름</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-colors" placeholder="홍길동">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300 mb-2">이메일</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-colors" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">메시지</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white placeholder-slate-500 transition-colors resize-none" placeholder="여기에 내용을 입력해주세요..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-colors shadow-lg hover:shadow-blue-500/30 flex justify-center items-center gap-2">
+                        <span>메시지 보내기</span>
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                </form>
+                
+                <!-- 제출 성공 메시지 컨테이너 -->
+                <div id="successMessage" class="hidden mt-6 p-4 bg-green-500/10 border border-green-500/20 text-green-400 rounded-lg text-center">
+                    메시지가 성공적으로 전송되었습니다! (이것은 데모입니다)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 py-8 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-slate-500 text-sm mb-4 md:mb-0">
+                &copy; <span id="currentYear"></span> [당신의 이름]. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-slate-500 hover:text-white transition-colors">
+                    <span class="sr-only">GitHub</span>
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-white transition-colors">
+                    <span class="sr-only">Twitter</span>
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 현재 연도 설정
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // 모바일 메뉴 토글
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 네비게이션 스크롤 효과
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+            }
+        });
+
+        // 연락처 폼 제출 시 가짜 메시지 표시
+        function showMessage() {
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('successMessage');
+            
+            // 폼 초기화
+            form.reset();
+            
+            // 메시지 표시
+            successMsg.classList.remove('hidden');
+            
+            // 3초 후 메시지 숨기기
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 3000);
+        }
+
+        // 스크롤 시 페이드 인 애니메이션 관찰자 (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // 요소가 15% 보일 때 트리거
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    // 한 번 나타난 요소는 관찰 해제 (선택사항)
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // .fade-in 클래스를 가진 모든 요소 관찰 시작
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+        
+        // 부드러운 스크롤을 위한 모바일 메뉴 닫기 추가
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
